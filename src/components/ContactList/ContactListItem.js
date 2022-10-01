@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { delContact } from 'redux/operations';
 import s from './ContactList.module.css';
 
-export default function ContactListItem({ name, number, id }) {
+export default function ContactListItem({ name, phone, id }) {
   const dispatch = useDispatch();
   return (
     <li className={s.item}>
-      {name}: {number}
+      {name}: {phone}
       <button
         className={s.btn}
         type="button"
@@ -21,6 +21,6 @@ export default function ContactListItem({ name, number, id }) {
 
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
