@@ -1,15 +1,15 @@
 import ContactListItem from './ContactListItem';
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 
 export default function ContactList() {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   console.log(
     '🚀 ~ file: ContactList.js ~ line 7 ~ ContactList ~ contacts',
     contacts
   );
 
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   // console.log(
   //   '🚀 ~ file: ContactList.js ~ line 13 ~ ContactList ~ filter',
   //   filter

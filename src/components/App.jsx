@@ -1,16 +1,18 @@
-// import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectContacts } from 'redux/selectors';
+import { fetchContacts } from 'redux/operations';
 
-export function App() {
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  // );
+export default function App() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div
@@ -26,8 +28,22 @@ export function App() {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+      {contacts.length > 0 ? (
+        <>
+          <Filter name="filter" />
+          <ContactList />
+        </>
+      ) : (
+        <h2>There are no contacts</h2>
+      )}
     </div>
   );
 }
+console.log(
+  '🚀 ~ file: App.jsx ~ line 42 ~ App ~ fetchContacts',
+  fetchContacts
+);
+console.log(
+  '🚀 ~ file: App.jsx ~ line 42 ~ App ~ fetchContacts',
+  fetchContacts
+);
